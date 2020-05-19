@@ -1,16 +1,21 @@
 <div class="content">
-  <h1 style="text-align: center;">Công cụ tạo mã HTML: Collapse</h1>
-  <b>Bước 1. Nhập chỉ mục lớn</b><input nz-input [(ngModel)]="chiMuc" placeholder="VD: 1" type="number"><br><br>
-  <b>Bước 2. Nhập đầu vào ở đây, mỗi mục một dòng.<br>Định dạng: <u>Số thứ tự chỉ mục | Tên chỉ mục | Link Youtube</u>.<br>Ví dụ: <i>1.1 | Hàm số | https://youtu.be/NzY-K2rYzzzz</i></b>
-  <textarea class="input-data" rows="10" nz-input [(ngModel)]="inputValue" placeholder="Ví dụ mẫu: &#13;&#10;1.1 | Hàm số | https://youtu.be/NzY-K2rYzzzz &#13;&#10;1.2 | Sự biến thiên | https://youtu.be/NzY-K2raaaaaa"></textarea>
+  <h1 style="text-align: center;"><b>Công cụ tạo mã HTML: Collapse</b></h1>
+  <b><span style="color: red;">Bước 1.</span> Nhập đề mục lớn</b><input nz-input [(ngModel)]="chiMuc"
+    placeholder="VD: 1" type="number"><br><br>
+  <b><span style="color: red;">Bước 2.</span> Nhập đầu vào ở đây, mỗi mục một dòng.<br>Định dạng: <u>Số thứ tự đề mục |
+      Tên đề mục | Link Youtube</u>.<br>Ví dụ: <i>1.1 | Hàm số | https://youtu.be/NzY-K2rYzzzz</i></b>
+  <textarea class="input-data" rows="10" nz-input [(ngModel)]="inputValue"
+    placeholder="Ví dụ mẫu: &#13;&#10;1.1 | Hàm số | https://youtu.be/NzY-K2rYzzzz &#13;&#10;1.2 | Sự biến thiên | https://youtu.be/NzY-K2raaaaaa"></textarea>
   <br>
-  <b>Bước 3. </b> <button nz-button nzType="primary" type="button" (click)="genCode()">Tạo mã HTML</button>
+  <b><span style="color: red;">Bước 3.</span> </b> <button nz-button nzType="primary" type="button"
+    (click)="genCode()">Tạo mã HTML</button>
   <span *ngIf="err !== ''" class="error">{{err}}</span>
   <br>
   <hr>
-  <b>Bước 4. Copy đầu ra ở đây:</b>
+  <b><span style="color: red;">Bước 4.</span> Copy đầu ra ở đây (Copy tất cả):</b>
   <textarea class="output-data" rows="8" nz-input [(ngModel)]="ouputCode"></textarea>
+  <br><br>
+  <div style="text-align: center;">UTEX-TOOLKIT.CF | Copyright © 2020 UTEx LMS. COST - HCMUTE. All rights reserved.</div><br>
 </div>
 
 <!-- Line break: &#13;&#10; -->
-
