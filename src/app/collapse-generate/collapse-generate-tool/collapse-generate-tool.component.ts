@@ -26,7 +26,7 @@ export class CollapseGenerateToolComponent implements OnInit {
     try {
       this.err = '';
       this.ouputCode = '';
-      if (this.chiMuc === '') {
+      if (this.chiMuc === '' || this.chiMuc === null) {
         // tslint:disable-next-line:no-string-throw
         throw 'Vui lòng điền bước 1';
       } else if (this.inputValue === '') {
