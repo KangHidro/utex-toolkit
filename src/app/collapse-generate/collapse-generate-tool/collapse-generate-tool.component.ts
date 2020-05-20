@@ -17,6 +17,11 @@ export class CollapseGenerateToolComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addSeparator() {
+    this.inputValue += ' | ';
+    document.getElementById('inputdata').focus();
+  }
+
   genCode() {
     try {
       this.err = '';
