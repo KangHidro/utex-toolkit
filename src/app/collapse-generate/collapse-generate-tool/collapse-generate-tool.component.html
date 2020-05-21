@@ -2,11 +2,12 @@
   <h1 style="text-align: center;"><b>Công cụ tạo mã HTML: Khối đóng/mở (dành cho video)</b></h1>
   <b><span style="color: red;">Bước 1.</span> Nhập số thứ tự của khối đóng/mở</b><input nz-input [(ngModel)]="thuTu"
     placeholder="VD: 1" type="number"><br><br>
-  <b><span style="color: red;">Bước 2.</span> Nhập mỗi video một dòng, theo định dạng: <u>Tên đề mục | Link Youtube</u>.<br>Ví dụ: </b><i>Hàm số <b>|</b> https://youtu.be/NzY-K2rYzzzz</i>
+  <b><span style="color: red;">Bước 2.</span> Nhập mỗi video một dòng, theo định dạng: <u>Tên đề mục | Link Youtube</u>.<br>Ví dụ: </b><i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz</i><br><b>Nếu có nhiều video trong 1 thẻ đóng/mở thì các link youtube được cách nhau với 2 dấu sao liên tiếp (**).</b><br>
+  <b>Ví dụ: </b> <i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz <b style="color: red;">**</b> https://youtu.be/NzY-K2rYyyyy <b style="color: red;">**</b> https://youtu.be/NzY-K2rYaaaa</i>
       <br>
-      Nhập dấu "|" trên bàn phím [Shift + \] hoặc <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Click vào đây để thêm dấu phân cách "|"</button>
+      Nhập dấu "|" trên bàn phím [Shift + \] hoặc <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Click vào đây để thêm dấu |</button> - <button nz-button nzType="primary" nzSize="small" (click)="addVideoSeparator()">Click vào đây để thêm dấu **</button>
   <textarea id="inputdata" class="input-data" rows="10" nz-input [(ngModel)]="inputValue"
-    placeholder="Ví dụ mẫu: &#13;&#10;Tích phân | https://youtu.be/Nznsrngfbm &#13;&#10;a. Sự biến thiên | https://youtu.be/NzY-K2raaaaaa &#13;&#10;1.1. Hàm số | https://youtu.be/NzY-K2rYzzzz"></textarea>
+    placeholder="Ví dụ mẫu: &#13;&#10;Tích phân | https://youtu.be/Nznsrngfbm &#13;&#10;a. Sự biến thiên | https://youtu.be/NzY-K2raaaaaa &#13;&#10;1.1. Hàm số | https://youtu.be/NzY-K2rYzzzz ** https://youtu.be/NzY-K2rYyyyy ** https://youtu.be/NzY-K2rYaaaa"></textarea>
   <br>
   <b><span style="color: red;">Bước 3. </span> </b>Click <button nz-button nzType="primary" type="button"
     (click)="genCode()">Tạo mã HTML</button>

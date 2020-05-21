@@ -21,6 +21,10 @@ export class CollapseGenerateToolComponent implements OnInit {
     this.inputValue += ' | ';
     document.getElementById('inputdata').focus();
   }
+  addVideoSeparator() {
+    this.inputValue += ' ** ';
+    document.getElementById('inputdata').focus();
+  }
 
   genCode() {
     try {
@@ -42,7 +46,8 @@ export class CollapseGenerateToolComponent implements OnInit {
             // tslint:disable-next-line:no-string-throw
             throw 'Bước 2 có lỗi định dạng ở dòng thứ ' + (i + 1) + '. Vui lòng kiểm tra lại.';
           } else {
-            this.ouputCode += `
+            if (!element[1].includes('**')) {
+              this.ouputCode += `
   <div class="card">
     <div class="card-header" id="heading${i + 1}">
       <h5 class="mb-0">
@@ -56,9 +61,35 @@ export class CollapseGenerateToolComponent implements OnInit {
       <div class="card-body"></div>
     </div>
   </div>
-`;
-            if (i === (listDanhMuc.length - 1)) {
-              this.ouputCode += `</div>`;
+            `;
+              if (i === (listDanhMuc.length - 1)) {
+                this.ouputCode += `</div>`;
+              }
+            } else {
+              const listVideo = element[1].split('**');
+              this.ouputCode += `
+  <div class="card">
+    <div class="card-header" id="heading${i + 1}">
+      <h5 class="mb-0">
+        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse${this.thuTu}s${i + 1}" aria-expanded="false" aria-controls="collapse${this.thuTu}s${i + 1}">${element[0].trim()}</button>
+      </h5>
+    </div>
+    <div id="collapse${this.thuTu}s${i + 1}" class="collapse" aria-labelledby="heading${i + 1}" data-parent="#accordion${this.thuTu}">
+      <div class="card-body card-body-custom">`;
+              // For list video
+              // tslint:disable-next-line:prefer-for-of
+              for (let j = 0; j < listVideo.length; j++) {
+                this.ouputCode += `
+        <video controls="true"><source src="${listVideo[j].trim()}">${listVideo[j].trim()}</video><br>`;
+              }
+              this.ouputCode += `
+      </div>
+      <div class="card-body"></div>
+    </div>
+  </div>`;
+              if (i === (listDanhMuc.length - 1)) {
+                this.ouputCode += `</div>`;
+              }
             }
           }
         }
