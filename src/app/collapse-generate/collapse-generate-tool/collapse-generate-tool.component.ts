@@ -38,7 +38,7 @@ export class CollapseGenerateToolComponent implements OnInit {
         // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < listDanhMuc.length; i++) {
           const element = listDanhMuc[i].split('|');
-          if (element.length !== 3) {
+          if (element.length !== 2) {
             // tslint:disable-next-line:no-string-throw
             throw 'Bước 2 có lỗi định dạng ở dòng thứ ' + (i + 1) + '. Vui lòng kiểm tra lại.';
           } else {
@@ -46,12 +46,12 @@ export class CollapseGenerateToolComponent implements OnInit {
   <div class="card">
     <div class="card-header" id="heading${i + 1}">
       <h5 class="mb-0">
-        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse${this.thuTu}s${i + 1}" aria-expanded="false" aria-controls="collapse${this.thuTu}s${i + 1}">${element[0].trim()}. ${element[1].trim()}</button>
+        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse${this.thuTu}s${i + 1}" aria-expanded="false" aria-controls="collapse${this.thuTu}s${i + 1}">${element[0].trim()}</button>
       </h5>
     </div>
     <div id="collapse${this.thuTu}s${i + 1}" class="collapse" aria-labelledby="heading${i + 1}" data-parent="#accordion${this.thuTu}">
       <div class="card-body card-body-custom">
-        <video controls="true"><source src="${element[2].trim()}">${element[2].trim()}</video>
+        <video controls="true"><source src="${element[1].trim()}">${element[1].trim()}</video>
       </div>
       <div class="card-body"></div>
     </div>
