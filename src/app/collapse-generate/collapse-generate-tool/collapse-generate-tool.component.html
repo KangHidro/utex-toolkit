@@ -1,20 +1,20 @@
 <div class="content">
-  <h1 style="text-align: center;"><b>Công cụ tạo mã HTML: Collapse</b></h1>
-  <b><span style="color: red;">Bước 1.</span> Nhập số thứ tự của khối collapse</b><input nz-input [(ngModel)]="chiMuc"
+  <h1 style="text-align: center;"><b>Công cụ tạo mã HTML: Khối đóng/mở (dành cho video)</b></h1>
+  <b><span style="color: red;">Bước 1.</span> Nhập số thứ tự của khối đóng/mở</b><input nz-input [(ngModel)]="thuTu"
     placeholder="VD: 1" type="number"><br><br>
-  <b><span style="color: red;">Bước 2.</span> Nhập đầu vào ở đây, mỗi mục một dòng.<br>Định dạng: <u>Số thứ tự đề mục |
+  <b><span style="color: red;">Bước 2.</span> Nhập mỗi video một dòng, theo định dạng: <u>Số thứ tự đề mục |
       Tên đề mục | Link Youtube</u>.<br>Ví dụ: <i>1.1 | Hàm số | https://youtu.be/NzY-K2rYzzzz</i></b>
       <br>
-      <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Thêm dấu phân cách "|"</button>
+      Nhập dấu "|" trên bàn phím [Shift + \] hoặc <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Click vào đây để thêm dấu phân cách "|"</button>
   <textarea id="inputdata" class="input-data" rows="10" nz-input [(ngModel)]="inputValue"
-    placeholder="Ví dụ mẫu: &#13;&#10;1.1 | Hàm số | https://youtu.be/NzY-K2rYzzzz &#13;&#10;1.2 | Sự biến thiên | https://youtu.be/NzY-K2raaaaaa"></textarea>
+    placeholder="Ví dụ mẫu: &#13;&#10;1.1 | Hàm số | https://youtu.be/NzY-K2rYzzzz &#13;&#10;a | Sự biến thiên | https://youtu.be/NzY-K2raaaaaa"></textarea>
   <br>
-  <b><span style="color: red;">Bước 3.</span> </b> <button nz-button nzType="primary" type="button"
+  <b><span style="color: red;">Bước 3. </span> </b>Click <button nz-button nzType="primary" type="button"
     (click)="genCode()">Tạo mã HTML</button>
   <span *ngIf="err !== ''" class="error">{{err}}</span>
   <br>
   <hr>
-  <b><span style="color: red;">Bước 4.</span> Copy đầu ra ở đây (Copy tất cả):</b>
+  <b><span style="color: red;">Bước 4.</span> Copy tất cả đầu ra ở đây ([Ctrl + A], sau đó [Ctrl + C]):</b>
   <textarea class="output-data" rows="5" nz-input [(ngModel)]="ouputCode" placeholder="Phải chuột, chọn tất cả và copy hoặc bấm tổ hợp phím: [Ctrl + A], sau đó [Ctrl + C]"></textarea>
   <br><br>
   <div style="text-align: center;">UTEX-TOOLKIT.CF | Copyright © 2020 UTEx LMS. COST - HCMUTE. All rights reserved.</div><br>
