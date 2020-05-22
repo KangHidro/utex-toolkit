@@ -25,6 +25,10 @@ export class CollapseGenerateToolComponent implements OnInit {
     this.inputValue += ' ** ';
     document.getElementById('inputdata').focus();
   }
+  addContentMaker() {
+    this.inputValue += ' ~ ';
+    document.getElementById('inputdata').focus();
+  }
 
   genCode() {
     try {

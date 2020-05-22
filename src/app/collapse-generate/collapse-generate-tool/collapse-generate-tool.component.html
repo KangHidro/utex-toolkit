@@ -1,15 +1,21 @@
 <div class="content">
   <h1 style="text-align: center;"><b>Công cụ tạo mã HTML: Khối đóng/mở (dành cho video)</b></h1>
-  <b><span style="color: red;">Bước 1.</span> Nhập số thứ tự của khối đóng/mở</b><input nz-input [(ngModel)]="thuTu"
+  <b><span style="color: red;">Bước 1.</span> Nhập số thứ tự của khối đóng/mở (các khối khác nhau phải có số khác nhau)</b><input nz-input [(ngModel)]="thuTu"
     placeholder="VD: 1" type="number"><br><br>
-  <b><span style="color: red;">Bước 2.</span> Nhập mỗi video một dòng, theo định dạng: <u>Tên đề mục | Link Youtube</u>.<br>Ví dụ: </b><i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz</i><br><b>Nếu có nhiều video trong 1 thẻ đóng/mở thì các link youtube được cách nhau với 2 dấu sao liên tiếp (**).</b><br>
-  <b>Ví dụ: </b> <i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz <b style="color: red;">**</b> https://youtu.be/NzY-K2rYyyyy <b style="color: red;">**</b> https://youtu.be/NzY-K2rYaaaa</i><br>
-  <b>Nếu không dùng thẻ đóng mở để chứa video mà chứa nội dung khác thì định dạng sẽ là: <u>Tên đề mục | ~</u></b><br>
-  <b>Ví dụ: </b> <i>Hàm số <b style="color: red;">| ~</b></i>
-      <br>
-      Nhập dấu "|" trên bàn phím [Shift + \] hoặc <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Click vào đây để thêm dấu |</button> - <button nz-button nzType="primary" nzSize="small" (click)="addVideoSeparator()">Click vào đây để thêm dấu **</button>
+  <b><span style="color: red;">Bước 2.</span> Nhập liệu theo định dạng tương ứng bên dưới:</b><br>
+  <b>Nếu mỗi thẻ đóng/mở chứa 01 video thì nhập theo định dạng: <u style="color: blue;">Tên đề mục <b style="color: red;">|</b> Link Youtube</u>.&emsp;&emsp;Ví dụ: </b><i>Hàm số
+    <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz</i><br>
+  <b>Nếu có nhiều video trong 01 thẻ đóng/mở thì các link youtube được cách nhau với 2 dấu sao liên tiếp (**).</b><b>&emsp;&emsp;Ví
+    dụ: </b> <i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz <b style="color: red;">**</b>
+    https://youtu.be/NzY-K2rYyyyy</i><br>
+  <b>Nếu không dùng thẻ đóng mở để chứa video mà chứa nội dung khác (để chỉnh sửa lại thủ công) thì định dạng sẽ là:
+    <u style="color: blue;">Tên đề mục | ~</u></b><b>&emsp;&emsp;Ví dụ: </b> <i>Hàm số <b style="color: red;">| ~</b></i>
+  <br>
+  <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Thêm dấu |</button> -
+  <button nz-button nzType="primary" nzSize="small" (click)="addVideoSeparator()">Thêm dấu **</button>
+  - <button nz-button nzType="primary" nzSize="small" (click)="addContentMaker()">Thêm dấu ~</button>
   <textarea id="inputdata" class="input-data" rows="10" nz-input [(ngModel)]="inputValue"
-    placeholder="Ví dụ mẫu: &#13;&#10;Tích phân | https://youtu.be/Nznsrngfbm &#13;&#10;a. Sự biến thiên | https://youtu.be/NzY-K2raaaaaa &#13;&#10;1.1. Hàm số | https://youtu.be/NzY-K2rYzzzz ** https://youtu.be/NzY-K2rYyyyy ** https://youtu.be/NzY-K2rYaaaa"></textarea>
+    placeholder="Ví dụ mẫu: &#13;&#10;Tích phân | https://youtu.be/Nznsrngfbm &#13;&#10;1.1. Hàm số | https://youtu.be/NzY-K2rYzzzz ** https://youtu.be/NzY-K2rYyyyy ** https://youtu.be/NzY-K2rYaaaa &#13;&#10;2. | ~"></textarea>
   <br>
   <b><span style="color: red;">Bước 3. </span> </b>Click <button nz-button nzType="primary" type="button"
     (click)="genCode()">Tạo mã HTML</button>
@@ -17,9 +23,11 @@
   <br>
   <hr>
   <b><span style="color: red;">Bước 4.</span> Copy tất cả đầu ra ở đây ([Ctrl + A], sau đó [Ctrl + C]):</b>
-  <textarea class="output-data" rows="5" nz-input [(ngModel)]="ouputCode" placeholder="Phải chuột, chọn tất cả và copy hoặc bấm tổ hợp phím: [Ctrl + A], sau đó [Ctrl + C]"></textarea>
+  <textarea class="output-data" rows="5" nz-input [(ngModel)]="ouputCode"
+    placeholder="Phải chuột, chọn tất cả và copy hoặc bấm tổ hợp phím: [Ctrl + A], sau đó [Ctrl + C]"></textarea>
   <br><br>
-  <div style="text-align: center;">UTEX-TOOLKIT.CF | Copyright © 2020 UTEx LMS. COST - HCMUTE. All rights reserved.</div><br>
+  <div style="text-align: center;">UTEX-TOOLKIT.CF | Copyright © 2020 UTEx LMS. COST - HCMUTE. All rights reserved.
+  </div><br>
 </div>
 
 <!-- Line break: &#13;&#10; -->
