@@ -3,7 +3,9 @@
   <b><span style="color: red;">Bước 1.</span> Nhập số thứ tự của khối đóng/mở</b><input nz-input [(ngModel)]="thuTu"
     placeholder="VD: 1" type="number"><br><br>
   <b><span style="color: red;">Bước 2.</span> Nhập mỗi video một dòng, theo định dạng: <u>Tên đề mục | Link Youtube</u>.<br>Ví dụ: </b><i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz</i><br><b>Nếu có nhiều video trong 1 thẻ đóng/mở thì các link youtube được cách nhau với 2 dấu sao liên tiếp (**).</b><br>
-  <b>Ví dụ: </b> <i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz <b style="color: red;">**</b> https://youtu.be/NzY-K2rYyyyy <b style="color: red;">**</b> https://youtu.be/NzY-K2rYaaaa</i>
+  <b>Ví dụ: </b> <i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz <b style="color: red;">**</b> https://youtu.be/NzY-K2rYyyyy <b style="color: red;">**</b> https://youtu.be/NzY-K2rYaaaa</i><br>
+  <b>Nếu không dùng thẻ đóng mở để chứa video mà chứa nội dung khác thì định dạng sẽ là: <u>Tên đề mục | ~</u></b><br>
+  <b>Ví dụ: </b> <i>Hàm số <b style="color: red;">| ~</b></i>
       <br>
       Nhập dấu "|" trên bàn phím [Shift + \] hoặc <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Click vào đây để thêm dấu |</button> - <button nz-button nzType="primary" nzSize="small" (click)="addVideoSeparator()">Click vào đây để thêm dấu **</button>
   <textarea id="inputdata" class="input-data" rows="10" nz-input [(ngModel)]="inputValue"
