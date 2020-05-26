@@ -59,8 +59,11 @@ export class CollapseGenerateToolComponent implements OnInit {
       </h5>
     </div>
     <div id="collapse${this.thuTu}s${i + 1}" class="collapse" aria-labelledby="heading${i + 1}" data-parent="#accordion${this.thuTu}">
-      <div class="card-body">Nội dung</div>
-      <div class="card-body">...</div>
+    <div class="card-body"></div>
+    <div class="card-body">
+      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    </div>
+    <div class="card-body"></div>
     </div>
   </div>
             `;
