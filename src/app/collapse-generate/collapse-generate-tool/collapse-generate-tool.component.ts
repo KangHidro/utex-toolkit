@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollapseGenerateToolComponent implements OnInit {
 
-  thuTu = '';
+  thuTu = Date.now();
   inputValue = '';
   ouputCode = '';
   err = '';
@@ -34,7 +34,7 @@ export class CollapseGenerateToolComponent implements OnInit {
     try {
       this.err = '';
       this.ouputCode = '';
-      if (this.thuTu === '' || this.thuTu === null) {
+      if (!this.thuTu) {
         // tslint:disable-next-line:no-string-throw
         throw 'Vui lòng điền bước 1';
       } else if (this.inputValue === '') {
@@ -111,12 +111,14 @@ export class CollapseGenerateToolComponent implements OnInit {
   </div>`;
               if (i === (listDanhMuc.length - 1)) {
                 this.ouputCode += `</div>`;
+                this.thuTu = Date.now();
               }
             }
           }
         }
       }
     } catch (error) {
+      this.thuTu = Date.now();
       this.err = error;
       console.log(error);
     }
