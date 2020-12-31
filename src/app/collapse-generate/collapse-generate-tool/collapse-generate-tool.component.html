@@ -1,14 +1,14 @@
 <div class="content">
   <h1 style="text-align: center;"><b>Công cụ tạo mã HTML: Khối đóng/mở (dành cho video)</b></h1>
-  <b><span style="color: red;">Bước 1.</span> (Không bắt buộc) Nhập số thứ tự của khối đóng/mở (các khối khác nhau phải có số khác nhau)</b><input nz-input [(ngModel)]="thuTu"
+  <b><span>Bước 0. (Không bắt buộc, mã này sẽ tự động tạo mới).</span> Nhập mã của khối đóng/mở (các khối khác nhau phải có số khác nhau)</b><input nz-input [(ngModel)]="thuTu"
     placeholder="VD: 1" type="number"><br><br>
-  <b><span style="color: red;">Bước 2.</span> Nhập liệu theo định dạng tương ứng bên dưới:</b><br>
-  <b>Nếu mỗi thẻ đóng/mở chứa 01 video thì nhập theo định dạng: <u style="color: blue;">Tên đề mục <b style="color: red;">|</b> Link Youtube</u>.&emsp;&emsp;Ví dụ: </b><i>Hàm số
+  <b><span style="color: red;">Bước 1.</span> Nhập liệu theo định dạng tương ứng bên dưới:</b><br>
+  <b>a. Nếu mỗi thẻ đóng/mở chứa 01 video thì nhập theo định dạng: <u style="color: blue;">Tên đề mục <b style="color: red;">|</b> Link Youtube</u>.&emsp;&emsp;Ví dụ: </b><i>Hàm số
     <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz</i><br>
-  <b>Nếu có nhiều video trong 01 thẻ đóng/mở thì các link youtube được cách nhau với 2 dấu sao liên tiếp (**).</b><b>&emsp;&emsp;Ví
+  <b>b. Nếu có nhiều video trong 01 thẻ đóng/mở thì các link youtube được cách nhau với 2 dấu sao liên tiếp (**).</b><b>&emsp;&emsp;Ví
     dụ: </b> <i>Hàm số <b style="color: red;">|</b> https://youtu.be/NzY-K2rYzzzz <b style="color: red;">**</b>
     https://youtu.be/NzY-K2rYyyyy</i><br>
-  <b>Nếu không dùng thẻ đóng mở để chứa video mà chứa nội dung khác (để chỉnh sửa lại thủ công) thì định dạng sẽ là:
+  <b>c. Nếu không dùng thẻ đóng mở để chứa video mà chứa nội dung khác (ví dụ hình ảnh, bảng biểu, v.v...) thì định dạng sẽ là:
     <u style="color: blue;">Tên đề mục | ~</u></b><b>&emsp;&emsp;Ví dụ: </b> <i>Hàm số <b style="color: red;">| ~</b></i>
   <br>
   <button nz-button nzType="primary" nzSize="small" (click)="addSeparator()">Thêm dấu |</button> -
@@ -17,16 +17,16 @@
   <textarea id="inputdata" class="input-data" rows="10" nz-input [(ngModel)]="inputValue"
     placeholder="Ví dụ mẫu: &#13;&#10;Tích phân | https://youtu.be/Nznsrngfbm &#13;&#10;1.1. Hàm số | https://youtu.be/NzY-K2rYzzzz ** https://youtu.be/NzY-K2rYyyyy ** https://youtu.be/NzY-K2rYaaaa &#13;&#10;2. | ~"></textarea>
   <br>
-  <b><span style="color: red;">Bước 3. </span> </b>Click <button nz-button nzType="primary" type="button"
+  <b><span style="color: red;">Bước 2. </span> </b>Click <button nz-button nzType="primary" type="button"
     (click)="genCode()">Tạo mã HTML</button>
   <span *ngIf="err !== ''" class="error">{{err}}</span>
   <br>
   <hr>
-  <b><span style="color: red;">Bước 4.</span> Copy tất cả đầu ra ở đây ([Ctrl + A], sau đó [Ctrl + C]):</b>
+  <b><span style="color: red;">Bước 3.</span> Copy tất cả đầu ra ở đây ([Ctrl + A], sau đó [Ctrl + C]):</b>
   <textarea class="output-data" rows="5" nz-input [(ngModel)]="ouputCode"
     placeholder="Phải chuột, chọn tất cả và copy hoặc bấm tổ hợp phím: [Ctrl + A], sau đó [Ctrl + C]"></textarea>
   <br><br>
-  <div style="text-align: center;">UTEX-TOOLKIT.CF | Copyright © 2020 UTEx LMS. COST - HCMUTE. All rights reserved.
+  <div style="text-align: center;">UTEX-TOOLKIT.CF | Copyright © 2020 - {{curYear}} UTEx LMS. COST - HCMUTE. All rights reserved.
   </div><br>
 </div>
 

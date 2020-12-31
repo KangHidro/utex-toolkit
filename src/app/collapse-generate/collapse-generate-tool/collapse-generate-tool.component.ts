@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollapseGenerateToolComponent implements OnInit {
 
+  curYear = new Date().getFullYear();
   thuTu = Date.now();
   inputValue = '';
   ouputCode = '';
@@ -48,7 +49,7 @@ export class CollapseGenerateToolComponent implements OnInit {
           const element = listDanhMuc[i].split('|');
           if (element.length !== 2) {
             // tslint:disable-next-line:no-string-throw
-            throw 'Bước 2 có lỗi định dạng ở dòng thứ ' + (i + 1) + '. Vui lòng kiểm tra lại.';
+            throw 'Bước 2 có lỗi định dạng ở dòng thứ ' + (i + 1) + '. Vui lòng kiểm tra lại. (Chú ý không được để dòng trống)';
           } else {
             if (element[1].trim() === '~') {
               this.ouputCode += `
@@ -111,11 +112,11 @@ export class CollapseGenerateToolComponent implements OnInit {
   </div>`;
               if (i === (listDanhMuc.length - 1)) {
                 this.ouputCode += `</div>`;
-                this.thuTu = Date.now();
               }
             }
           }
         }
+        this.thuTu = Date.now();
       }
     } catch (error) {
       this.thuTu = Date.now();
