@@ -37,10 +37,10 @@ export class CollapseGenerateToolComponent implements OnInit {
       this.ouputCode = '';
       if (!this.thuTu) {
         // tslint:disable-next-line:no-string-throw
-        throw 'Vui lòng điền bước 1';
+        throw 'Vui lòng điền bước 0';
       } else if (this.inputValue === '') {
         // tslint:disable-next-line:no-string-throw
-        throw 'Vui lòng điền bước 2';
+        throw 'Vui lòng điền bước 1';
       } else {
         this.ouputCode = `<div id="accordion${this.thuTu}">`;
         const listDanhMuc = this.inputValue.split('\n');
@@ -49,7 +49,7 @@ export class CollapseGenerateToolComponent implements OnInit {
           const element = listDanhMuc[i].split('|');
           if (element.length !== 2) {
             // tslint:disable-next-line:no-string-throw
-            throw 'Bước 2 có lỗi định dạng ở dòng thứ ' + (i + 1) + '. Vui lòng kiểm tra lại. (Chú ý không được để dòng trống)';
+            throw 'Bước 1 có lỗi định dạng ở dòng thứ ' + (i + 1) + '. Vui lòng kiểm tra lại. (Chú ý không được để dòng trống)';
           } else {
             if (element[1].trim() === '~') {
               this.ouputCode += `
