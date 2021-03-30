@@ -11,3 +11,4 @@ Thanks to Daniel [(Guide)](https://www.smashingmagazine.com/2016/08/sghpa-single
 ## Dev. Build Notes
 - Create 404.html in `src` folder
 - Add its name to `angular.json`, path: <pj-name>.architect.build.options.assets
+- Edit `<base href=...>` in `index.html`
