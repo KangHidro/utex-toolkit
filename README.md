@@ -1,27 +1,16 @@
-# UtexToolkit
+# UTEx Toolkit v2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
+http://utex-toolkit.cf
 
-## Development server
+Copyright © UTEx LMS. COST - HCMUTE. All rights reserved.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Build & Serve to Github Pages
 
-## Code scaffolding
+Thanks to Daniel [(Guide)](https://www.smashingmagazine.com/2016/08/sghpa-single-page-app-hack-github-pages)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Dev. Build Notes
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Create 404.html in `src` folder
+- Add its name to `angular.json`, path: <pj-name>.architect.build.options.assets
+- Edit `<base href=...>` in `index.html`
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
