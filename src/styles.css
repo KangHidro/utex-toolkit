@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+.pad-10 {
+  padding: 10px;
+}
+
+.table-row-gray, .table-row-gray > th, .table-row-gray > td {
+  background-color: #d1d1d1 !important;
+  background: #d1d1d1 !important;
+}
+
+.table-row-yellow, .table-row-yellow > th, .table-row-yellow > td {
+  background-color: #fffce2 !important;
+  background: #fffce2 !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.hide-thead {
+  transform: scaleY(0);
+}
+
+.text-right {
+  text-align: right;
+}
+
+.ant-table.ant-table-small .ant-table-footer, .ant-table.ant-table-small .ant-table-tbody>tr>td, .ant-table.ant-table-small .ant-table-thead>tr>th, .ant-table.ant-table-small .ant-table-title, .ant-table.ant-table-small tfoot>tr>td, .ant-table.ant-table-small tfoot>tr>th {
+  padding: 4px;
+}

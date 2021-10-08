@@ -1,0 +1,42 @@
+<script>
+ function attachLink(id, link) {
+  if (document.getElementById(id).src == link) {
+   document.getElementById(id).src = '';
+  } else {
+   document.getElementById(id).src = link;
+  }
+ }
+</script>
+<div id="aco%%__aco_id__%%">
+ <div class="card">
+  <div class="card-header" id="%%__acho_head_id__%%">
+   <h5 class="mb-0">
+    <button type="button" class="btn btn-link" data-toggle="collapse"
+     data-target="#cls%%__aco_id__%%part%%__cls_index__%%" aria-expanded="false"
+     aria-controls="cls%%__aco_id__%%part%%__cls_index__%%"
+     onclick="attachLink('%%__video_id__%%', '%%__video_link__%%')">
+     %%__video_name__%%
+    </button>
+   </h5>
+  </div>
+  <div id="cls%%__aco_id__%%part%%__cls_index__%%" class="collapse" aria-labelledby="%%__acho_head_id__%%"
+   data-parent="#aco%%__aco_id__%%">
+   <div class="card-body card-body-custom">
+    <div class="k-container">
+     <iframe id="%%__video_id__%%" class="k-responsive-iframe" src="" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!--
+  %%__aco_id__%%
+  %%__acho_head_id__%%
+  %%__cls_index__%%
+  %%__video_id__%%
+  %%__video_link__%%
+  %%__video_name__%%
+-->

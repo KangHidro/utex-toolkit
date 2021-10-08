@@ -1,0 +1,64 @@
+<div nz-row class="pad-10">
+  <div nz-col nzSpan="24">
+    <ng-container *ngTemplateOutlet="tableLoop; context: {$implicit: listData}"></ng-container>
+    <ng-template #tableLoop let-transferData>
+      <div nz-row>
+        <div nz-col nzSpan="12">
+          <button nz-button nzType="primary" nzSize="small" (click)="loadDemo()"
+            *ngIf="transferData.showTableHeader">Load dữ liệu mẫu (sẽ làm mất dữ liệu hiện tại)</button>
+        </div>
+        <div nz-col nzSpan="12" class="text-right">
+          <button nz-button nzType="primary" nzSize="small" (click)="addBlankMuc(transferData, -1)"
+            *ngIf="transferData.showTableHeader">Thêm một dòng vào bảng ↴</button>
+        </div>
+      </div>
+      <nz-table #nzTable [nzData]="transferData.data" nzTableLayout="fixed" nzSize="small" [nzPageSize]="10000"
+        nzShowPagination="false" [nzScroll]="{ x: transferData.showTableHeader ? '550px' : '650px'}" nzBordered
+        [nzNoResult]="noData">
+        <thead>
+          <tr class="table-row-gray">
+            <th nzWidth="5%" nzAlign="center">↓</th>
+            <th nzWidth="15%" nzAlign="center">Loại</th>
+            <th nzWidth="40%" nzAlign="center">Tiêu đề khối</th>
+            <th nzWidth="40%" nzAlign="center">Nội dung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let data of transferData.data; let i = index">
+            <tr>
+              <td [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"
+                nzAlign="center" *ngIf="data.type === listType.OTHER"></td>
+              <td *ngIf="data.type !== listType.OTHER"></td>
+              <td nzAlign="center">
+                <nz-select class="w-100" nzPlaceHolder="Chọn" nzAllowClear="false" nzSize="small" [nzShowArrow]="false"
+                  [(ngModel)]="data.type">
+                  <nz-option nzLabel="Video" [nzValue]="listType.VIDEO"></nz-option>
+                  <nz-option nzLabel="Khối con" [nzValue]="listType.OTHER"></nz-option>
+                </nz-select>
+              </td>
+              <td nzAlign="center">
+                <input [(ngModel)]="data.name" nz-input type="text" nzSize="small" class="w-100">
+              </td>
+              <td nzAlign="center">
+                <input *ngIf="data.type && data.type !== listType.OTHER" [(ngModel)]="data.content" nz-input type="text" nzSize="small" class="w-100">
+                <button *ngIf="data.type && data.type === listType.OTHER" nz-button nzType="link" nzSize="small"
+                  (click)="addBlankMuc(transferData,i);onExpandChange(data.id,true)">Thêm ↴</button>
+              </td>
+            </tr>
+            <tr [nzExpand]="expandSet.has(data.id)">
+              <ng-container
+                *ngTemplateOutlet="tableLoop; context: {$implicit: {data: data.childs, showTableHeader: 0}}">
+              </ng-container>
+            </tr>
+          </ng-container>
+        </tbody>
+      </nz-table>
+    </ng-template>
+  </div>
+</div>
+
+<button nz-button nzType="primary" nzSize="small" (click)="log()">Log</button>
+
+<ng-template #noData>
+  <b>- Chưa có dữ liệu -</b>
+</ng-template>
