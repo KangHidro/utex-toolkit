@@ -23,8 +23,8 @@
             *ngIf="transferData.showTableHeader && isDeleteMode && this.listData.data.length">⌧ Xoá Tất cả</button>
         </div>
         <div nz-col nzSpan="24" class="text-right" *ngIf="transferData.showTableHeader">
-          <span><b>Chú ý: Cần nhập hết các <u class="text-red">ô đỏ</u>; Kéo thả để sắp xếp lại thứ tự</b></span>
-          <a href="https://youtu.be/Zz2pvbIkM3Y" target="_blank"><button class="mr-left-5" nz-button class="nz-btn-green" nzSize="small">
+          <span><b>Chú ý: Cần nhập hết các <b class="text-red">ô đỏ</b>; Kéo thả để sắp xếp lại thứ tự</b></span>
+          <a href="https://youtu.be/Zz2pvbIkM3Y" target="_blank" class="mr-left-5"><button class="mr-left-5" nz-button class="nz-btn-green" nzSize="small">
             Video hướng dẫn</button></a>
           <button class="mr-left-5" nz-button nzType="primary" nzSize="small" (click)="addBlankMuc(transferData, -1)">
             Thêm một dòng vào bảng ↴</button>
