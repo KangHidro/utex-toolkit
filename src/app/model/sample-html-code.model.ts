@@ -23,7 +23,6 @@ export class SampleHtmlVideoCode {
      </div>
      <div id="cls%%__cls_id__%%" class="collapse" aria-labelledby="head%%__aco_head_id__%%"
       data-parent="#aco%%__aco_id__%%">
-      <div class="card-body"></div>
       <div class="card-body card-body-custom">
        <div class="k-container">
         <iframe id="%%__video_id__%%" class="k-responsive-iframe" src="" frameborder="0"
@@ -31,7 +30,6 @@ export class SampleHtmlVideoCode {
          allowfullscreen></iframe>
        </div>
       </div>
-      <div class="card-body"></div>
      </div>
     </div>
    </div>

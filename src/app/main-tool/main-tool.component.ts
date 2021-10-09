@@ -69,10 +69,7 @@ export class MainToolComponent implements OnInit {
       } else {
         return '\n<!-- -----Có một mục chưa đủ nội dung----- -->\n';
       }
-    } else { // Type OTHER
-      console.log('XXXXXXXXXX', leaf.childs.map(child => {
-        return this.genCodeForLeaf(child);
-      }).join('\n<!-- -------------------- -->\n'));
+    } else if (leaf.type === SystemConstant.CONTENT_TYPE.OTHER) {
       return new SampleHtmlOtherCode(
         this.generateRandomId(),
         this.generateRandomId(),
@@ -81,6 +78,8 @@ export class MainToolComponent implements OnInit {
         leaf.childs.length ? leaf.childs.map(child => this.genCodeForLeaf(child))
           .join('\n<!-- -------------------- -->\n') : 'Chèn nội dung tại đây'
       ).html;
+    } else {
+      return '\n<div class="card-body"><br></div>\n';
     }
   }
 
@@ -109,6 +108,7 @@ export class MainToolComponent implements OnInit {
   }
 
   importOldData(file: File) {
+    this.codeResult = '';
     this.loadingTable = true;
     const fileReader = new FileReader();
     fileReader.readAsText(file, 'UTF-8');
