@@ -108,24 +108,26 @@ export class MainToolComponent implements OnInit {
   }
 
   importOldData(file: File) {
-    this.codeResult = '';
-    this.loadingTable = true;
-    const fileReader = new FileReader();
-    fileReader.readAsText(file, 'UTF-8');
-    fileReader.onload = () => {
-      if (typeof fileReader.result === 'string') {
-        try {
-          this.listData = JSON.parse(fileReader.result);
-          this.loadingTable = false;
-        } catch (error) {
+    if (file) {
+      this.codeResult = '';
+      this.loadingTable = true;
+      const fileReader = new FileReader();
+      fileReader.readAsText(file, 'UTF-8');
+      fileReader.onload = () => {
+        if (typeof fileReader.result === 'string') {
+          try {
+            this.listData = JSON.parse(fileReader.result);
+            this.loadingTable = false;
+          } catch (error) {
+            this.nzModalSvc.error({ nzTitle: 'Có vẻ như dữ liệu sai định dạng!' });
+            this.loadingTable = false;
+          }
+        } else {
           this.nzModalSvc.error({ nzTitle: 'Có vẻ như dữ liệu sai định dạng!' });
           this.loadingTable = false;
         }
-      } else {
-        this.nzModalSvc.error({ nzTitle: 'Có vẻ như dữ liệu sai định dạng!' });
-        this.loadingTable = false;
-      }
-    };
+      };
+    }
   }
 
   exportDataForSave() {
