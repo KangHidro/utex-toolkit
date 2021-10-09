@@ -5,6 +5,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainToolComponent } from './main-tool/main-tool.component';
+import { PageErrorComponent } from './page-error/page-error.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { vi_VN } from 'ng-zorro-antd/i18n';
 import { CommonModule, registerLocaleData } from '@angular/common';
@@ -21,6 +22,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzResultModule } from 'ng-zorro-antd/result';
 
 export const zorroPlugin = [
   NzGridModule,
@@ -29,12 +31,14 @@ export const zorroPlugin = [
   NzInputModule,
   NzModalModule,
   NzSelectModule,
+  NzResultModule,
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainToolComponent
+    MainToolComponent,
+    PageErrorComponent
   ],
   imports: [
     CommonModule,

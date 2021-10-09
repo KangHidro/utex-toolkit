@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'utex-toolkit';
+  constructor() {
+    console.log('%cRev. 21.1009.1', 'background: #3f51b5; color: #fff; padding: 5px 10px;');
+  }
 }

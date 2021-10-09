@@ -1,0 +1,16 @@
+<div nz-row>
+  <div nz-col nzSpan="24">
+    <nz-result class="w-100" nzStatus="404" nzTitle="404" [nzSubTitle]="errTxt">
+      <div nz-result-extra>
+        <a href="https://mail.google.com" target="_blank"><button nz-button nzType="primary">Liên hệ</button></a>
+      </div>
+    </nz-result>
+  </div>
+</div>
+<ng-template #errTxt>
+  <div nz-row>
+    <div nz-col nzSpan="24" class="text-center">
+      <b>Mục này không tồn tại.<br>Vui lòng liên hệ với giảng viên của bạn để được hỗ trợ.</b>
+    </div>
+  </div>
+</ng-template>
