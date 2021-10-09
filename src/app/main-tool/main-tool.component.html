@@ -23,7 +23,9 @@
             *ngIf="transferData.showTableHeader && isDeleteMode && this.listData.data.length">⌧ Xoá Tất cả</button>
         </div>
         <div nz-col nzSpan="24" class="text-right" *ngIf="transferData.showTableHeader">
-          <span><b>Chú ý nhập hết các <u class="text-red">ô đỏ</u>; Kéo thả để sắp xếp lại thứ tự</b></span>
+          <span><b>Chú ý: Cần nhập hết các <u class="text-red">ô đỏ</u>; Kéo thả để sắp xếp lại thứ tự</b></span>
+          <a href="https://youtu.be/Zz2pvbIkM3Y" target="_blank"><button class="mr-left-5" nz-button class="nz-btn-green" nzSize="small">
+            Video hướng dẫn</button></a>
           <button class="mr-left-5" nz-button nzType="primary" nzSize="small" (click)="addBlankMuc(transferData, -1)">
             Thêm một dòng vào bảng ↴</button>
         </div>
@@ -38,7 +40,7 @@
             <th nzAlign="center">Tiêu đề khối</th>
             <th nzAlign="center">Nội dung</th>
             <th nzWidth="50px" nzAlign="center" *ngIf="isDeleteMode">
-              <span class="pointer" (click)="cleanAllData()">❌</span>
+              <span class="pointer" (click)="cleanAllData()" *ngIf="transferData.showTableHeader">❌</span>
             </th>
             <th nzWidth="1px" nzAlign="center" *ngIf="resizeTable"></th>
           </tr>
@@ -65,7 +67,7 @@
                 <input *ngIf="data.type && data.type === listType.VIDEO" [(ngModel)]="data.content" nz-input type="text"
                   nzSize="small" class="w-100" [ngStyle]="data.content ? {} : {border: 'solid 2px red'}">
                 <button *ngIf="data.type && data.type === listType.OTHER" nz-button nzType="link" nzSize="small"
-                  (click)="addBlankMuc(transferData,i);onExpandChange(data.id,true)">Thêm ↴</button>
+                  (click)="addBlankMuc(transferData,i);onExpandChange(data.id,true)">Thêm dòng con ↴</button>
               </td>
               <td nzAlign="center" *ngIf="isDeleteMode">
                 <span class="pointer" (click)="deleteRecord(transferData, i)">❌</span>
@@ -92,7 +94,7 @@
   </div>
   <div nz-col nzSpan="24" class="text-center mr-top-10">
     <br>
-    UTEX-TOOLKIT.CF · © STC - HCMUTE. UTEx/FHQx
+    UTEX-TOOLKIT.CF · © STC - HCMUTE. UTEx/FHQx · <a href="https://zalo.me/0379526585" target="_blank">Liên hệ hỗ trợ sử dụng</a>
   </div>
 </div>
 
