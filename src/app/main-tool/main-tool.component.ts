@@ -136,7 +136,7 @@ export class MainToolComponent implements OnInit {
       document.body.appendChild(a);
       a.setAttribute('style', 'display: none');
       a.href = 'data:text/json;charset=UTF-8,' + encodeURIComponent(downloadData);
-      a.download = `utex-toolkit-data-${Date.now()}.json`;
+      a.download = `utex-collapse-${this.generateRandomId(4)}.json`;
       a.click();
       a.remove();
     } else {
@@ -146,7 +146,7 @@ export class MainToolComponent implements OnInit {
 
   cleanAllData() {
     this.nzModalSvc.confirm({
-      nzTitle: 'Bạn chắc nhắn muốn xoá dữ liệu chứ?',
+      nzTitle: 'Bạn chắc nhắn muốn XOÁ TẤT CẢ dữ liệu chứ?',
       nzOnOk: () => { this.listData = { data: [], showTableHeader: 1 }; }
     });
   }
