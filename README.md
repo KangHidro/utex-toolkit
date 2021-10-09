@@ -13,6 +13,20 @@ Thanks to Daniel [(Guide)](https://www.smashingmagazine.com/2016/08/sghpa-single
 - Create 404.html in `src` folder
 - Add its name to `angular.json`, path: <pj-name>.architect.build.options.assets
 - Edit `<base href=...>` in `index.html`
+- Add redirect script to `index.html', before any other script:
+
+```
+<script>
+  (function () {
+    var redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redirect && redirect != location.href) {
+      history.replaceState(null, null, redirect);
+    }
+  })();
+</script>
+```
+
 - This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
 - Add this style to UTEX/FHQX custom stylesheet
 
