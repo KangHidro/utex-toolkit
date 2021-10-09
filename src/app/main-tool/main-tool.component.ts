@@ -147,7 +147,10 @@ export class MainToolComponent implements OnInit {
   cleanAllData() {
     this.nzModalSvc.confirm({
       nzTitle: 'Bạn chắc nhắn muốn XOÁ TẤT CẢ dữ liệu chứ?',
-      nzOnOk: () => { this.listData = { data: [], showTableHeader: 1 }; }
+      nzOnOk: () => {
+        this.listData = { data: [], showTableHeader: 1 };
+        this.codeResult = '';
+      }
     });
   }
 
