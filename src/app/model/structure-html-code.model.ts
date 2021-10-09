@@ -1,3 +1,4 @@
+import { SystemConstant } from "../core/constant";
 
 function generateRandomId(len?: number): string {
   const dic = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -21,7 +22,7 @@ export class HtmlContent {
   constructor() {
     this.id = generateRandomId();
     this.name = '';
-    this.type = '';
+    this.type = SystemConstant.CONTENT_TYPE.VIDEO;
     this.content = '';
     this.childs = [];
   }

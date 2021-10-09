@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ export const zorroPlugin = [
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    DragDropModule,
     zorroPlugin,
   ],
   providers: [{ provide: NZ_I18N, useValue: vi_VN }],

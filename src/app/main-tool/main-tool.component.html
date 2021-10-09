@@ -1,34 +1,50 @@
 <div nz-row class="pad-10">
+  <div nz-col nzSpan="24" class="text-center">
+    <h1>CÔNG CỤ TẠO MÃ HTML: KHỐI ĐÓNG/MỞ CHO TRANG UTEX/FHQX</h1>
+  </div>
   <div nz-col nzSpan="24">
     <ng-container *ngTemplateOutlet="tableLoop; context: {$implicit: listData}"></ng-container>
     <ng-template #tableLoop let-transferData>
       <div nz-row>
-        <div nz-col nzSpan="12">
-          <button nz-button nzType="primary" nzSize="small" (click)="loadDemo()"
-            *ngIf="transferData.showTableHeader">Load dữ liệu mẫu (sẽ làm mất dữ liệu hiện tại)</button>
+        <div nz-col nzSpan="24">
+          <button nz-button class="nz-btn-blue mr-right-5" nzSize="small" (click)="generateHtmlCode()"
+            *ngIf="transferData.showTableHeader">TẠO MÃ</button>
+          <button nz-button class="nz-btn-green mr-right-5" nzSize="small" (click)="importOldDataClick()"
+            *ngIf="transferData.showTableHeader">Nhập file</button>
+          <button nz-button class="nz-btn-green mr-right-5" nzSize="small" (click)="exportDataForSave()"
+            *ngIf="transferData.showTableHeader">Xuất file</button>
+          <button nz-button class="nz-btn-red mr-right-5" nzSize="small" (click)="isDeleteMode=true"
+            *ngIf="transferData.showTableHeader && !isDeleteMode">BẬT chế độ xoá</button>
+          <button nz-button class="nz-btn-red mr-right-5" nzSize="small" (click)="isDeleteMode=false"
+            *ngIf="transferData.showTableHeader && isDeleteMode">THOÁT chế độ xoá</button>
+          <button nz-button class="nz-btn-red mr-right-5" nzSize="small" (click)="cleanAllData()"
+            *ngIf="transferData.showTableHeader && isDeleteMode && this.listData.data.length">Xoá Tất cả</button>
         </div>
-        <div nz-col nzSpan="12" class="text-right">
-          <button nz-button nzType="primary" nzSize="small" (click)="addBlankMuc(transferData, -1)"
-            *ngIf="transferData.showTableHeader">Thêm một dòng vào bảng ↴</button>
+        <div nz-col nzSpan="24" class="text-right" *ngIf="transferData.showTableHeader">
+          <span><b>Chú ý nhập hết các <u class="text-red">ô đỏ</u>; Kéo thả để sắp xếp lại thứ tự</b></span>
+          <button class="mr-left-5" nz-button nzType="primary" nzSize="small" (click)="addBlankMuc(transferData, -1)">
+            Thêm một dòng vào bảng ↴</button>
         </div>
       </div>
       <nz-table #nzTable [nzData]="transferData.data" nzTableLayout="fixed" nzSize="small" [nzPageSize]="10000"
-        nzShowPagination="false" [nzScroll]="{ x: transferData.showTableHeader ? '550px' : '650px'}" nzBordered
-        [nzNoResult]="noData">
+        nzShowPagination="false" [nzScroll]="{ x: transferData.showTableHeader ? '450px' : '500px'}" nzBordered
+        [nzNoResult]="noData" [nzLoading]="loadingTable">
         <thead>
           <tr class="table-row-gray">
-            <th nzWidth="5%" nzAlign="center">↓</th>
-            <th nzWidth="15%" nzAlign="center">Loại</th>
-            <th nzWidth="40%" nzAlign="center">Tiêu đề khối</th>
-            <th nzWidth="40%" nzAlign="center">Nội dung</th>
+            <th nzWidth="50px" nzAlign="center">↓</th>
+            <th nzWidth="100px" nzAlign="center">Loại</th>
+            <th nzAlign="center">Tiêu đề khối</th>
+            <th nzAlign="center">Nội dung</th>
+            <th nzWidth="50px" nzAlign="center" *ngIf="isDeleteMode"></th>
+            <th nzWidth="1px" nzAlign="center" *ngIf="resizeTable"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody cdkDropList (cdkDropListDropped)="dragDropChangeOrder($event, transferData.data)">
           <ng-container *ngFor="let data of transferData.data; let i = index">
-            <tr>
+            <tr cdkDrag cdkDragLockAxis="y">
               <td [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"
-                nzAlign="center" *ngIf="data.type === listType.OTHER"></td>
-              <td *ngIf="data.type !== listType.OTHER"></td>
+                nzAlign="right" *ngIf="data.type === listType.OTHER">{{i+1}}</td>
+              <td nzAlign="right" *ngIf="data.type !== listType.OTHER">{{i+1}}</td>
               <td nzAlign="center">
                 <nz-select class="w-100" nzPlaceHolder="Chọn" nzAllowClear="false" nzSize="small" [nzShowArrow]="false"
                   [(ngModel)]="data.type">
@@ -37,14 +53,19 @@
                 </nz-select>
               </td>
               <td nzAlign="center">
-                <input [(ngModel)]="data.name" nz-input type="text" nzSize="small" class="w-100">
+                <input [(ngModel)]="data.name" nz-input type="text" nzSize="small" class="w-100"  [ngStyle]="data.name ? {} : {border: 'solid 2px red'}">
               </td>
               <td nzAlign="center">
-                <input *ngIf="data.type && data.type !== listType.OTHER" [(ngModel)]="data.content" nz-input type="text" nzSize="small" class="w-100">
+                <input *ngIf="data.type && data.type !== listType.OTHER" [(ngModel)]="data.content" nz-input type="text"
+                  nzSize="small" class="w-100" [ngStyle]="data.content ? {} : {border: 'solid 2px red'}">
                 <button *ngIf="data.type && data.type === listType.OTHER" nz-button nzType="link" nzSize="small"
                   (click)="addBlankMuc(transferData,i);onExpandChange(data.id,true)">Thêm ↴</button>
               </td>
-            </tr>
+              <td nzAlign="center" *ngIf="isDeleteMode">
+                <span class="pointer" (click)="deleteRecord(transferData, i)">❌</span>
+              </td>
+              <td nzAlign="center" *ngIf="resizeTable"></td>
+              </tr>
             <tr [nzExpand]="expandSet.has(data.id)">
               <ng-container
                 *ngTemplateOutlet="tableLoop; context: {$implicit: {data: data.childs, showTableHeader: 0}}">
@@ -55,10 +76,20 @@
       </nz-table>
     </ng-template>
   </div>
+  <div nz-col nzSpan="24" class="text-center mr-top-10">
+    <button nz-button class="w-100 nz-btn-blue" (click)="generateHtmlCode()">TẠO MÃ</button>
+  </div>
+  <div nz-col nzSpan="24" class="mr-top-10" *ngIf="codeResult">
+    Copy tất cả đầu ra ở đây ([Ctrl + A], sau đó [Ctrl + C]):<br>
+    <textarea rows="5" class="w-100" [value]="codeResult"></textarea>
+  </div>
 </div>
 
 <button nz-button nzType="primary" nzSize="small" (click)="log()">Log</button>
+<button nz-button nzType="primary" nzSize="small" (click)="loadDemo()">Load demo</button>
 
 <ng-template #noData>
   <b>- Chưa có dữ liệu -</b>
 </ng-template>
+<input #importDataElement type="file" [accept]="'.json'" (change)="importOldData($any($event).target.files[0])"
+  [multiple]="false" hidden>
