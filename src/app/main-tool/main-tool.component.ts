@@ -58,14 +58,14 @@ export class MainToolComponent implements OnInit {
 
   genCodeForLeaf(leaf: HtmlContent): string {
     if (leaf.type === SystemConstant.CONTENT_TYPE.VIDEO) {
-      if (leaf.name && leaf.content) {
+      if (leaf.name.trim() && leaf.content.trim()) {
         return new SampleHtmlVideoCode(
           this.generateRandomId(),
           this.generateRandomId(),
-          leaf.name,
+          leaf.name.trim(),
           this.generateRandomId(),
           this.generateRandomId(),
-          `https://www.youtube.com/embed/${this.formatLinkYoutube(leaf.content)}?rel=0&amp;modestbranding=1`).html;
+          `https://www.youtube.com/embed/${this.formatLinkYoutube(leaf.content.trim())}?rel=0&amp;modestbranding=1`).html;
       } else {
         return '\n<!-- -----Có một mục chưa đủ nội dung----- -->\n';
       }
@@ -73,7 +73,7 @@ export class MainToolComponent implements OnInit {
       return new SampleHtmlOtherCode(
         this.generateRandomId(),
         this.generateRandomId(),
-        leaf.name,
+        leaf.name.trim(),
         this.generateRandomId(),
         leaf.childs.length ? leaf.childs.map(child => this.genCodeForLeaf(child))
           .join('\n<!-- -------------------- -->\n') : 'Chèn nội dung tại đây'
@@ -133,7 +133,6 @@ export class MainToolComponent implements OnInit {
   exportDataForSave() {
     if (this.listData.data.length) {
       const downloadData = JSON.stringify(this.listData);
-      // return this.sanitizerSvc.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(downloadData))
       const a = document.createElement('a');
       document.body.appendChild(a);
       a.setAttribute('style', 'display: none');
@@ -159,7 +158,6 @@ export class MainToolComponent implements OnInit {
   dragDropChangeOrder(event: CdkDragDrop<HtmlContent[]>, listData: HtmlContent[]) {
     moveItemInArray(listData, event.previousIndex, event.currentIndex);
     listData = [...listData];
-    // this.reCaculateMinPointByIndex();
   }
 
   generateRandomId(len?: number): string {
@@ -173,33 +171,6 @@ export class MainToolComponent implements OnInit {
     } else {
       return this.generateRandomId(32);
     }
-  }
-
-  loadDemo() {
-    this.listData = {
-      "data": [
-        {
-          "id": "35x8nxecjf3e2zxp",
-          "name": "Khối con 1",
-          "type": "OTHER",
-          "content": "",
-          "childs": [
-            {
-              "id": "ez47ebue3xa3gccf",
-              "name": "Video 1",
-              "type": "VIDEO",
-              "content": "https://www.youtube.com/watch?v=6jZVsr7q-tE",
-              "childs": []
-            }
-          ]
-        }
-      ],
-      "showTableHeader": 1
-    };
-  }
-
-  log() {
-    console.log(this.listData);
   }
 
 }
