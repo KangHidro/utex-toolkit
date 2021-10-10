@@ -5,5 +5,5 @@ export class SystemConstant {
     OTHER: 'OTHER',
   };
 
-  public static JS_FOR_VIDEO_TYPE = '<script>function attachLink(e,t){document.getElementById(e).src==t?document.getElementById(e).src="":document.getElementById(e).src=t}</script>';
+  public static JS_FOR_VIDEO_TYPE = '<script>function attachLink(t,e){"complete"===document.readyState?document.getElementById(t).src=e:alert("Dữ liệu vẫn đang tải...\nVui lòng bấm OK và chờ thêm giây lát!")}</script>';
 }

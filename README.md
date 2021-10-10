@@ -32,10 +32,14 @@ Thanks to Daniel [(Guide)](https://www.smashingmagazine.com/2016/08/sghpa-single
 
 ```
 .k-container {
-  position: relative; overflow: hidden; width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */ }
-
+  position: relative; overflow: hidden; width: 100%; max-width: 854px; }
+@media (min-width: 1020px) {
+  .k-container { padding-top: 480px; }
+}
+@media (max-width: 1019px) {
+  .k-container { padding-top: 56.25%; }
+}
 .k-responsive-iframe {
   position: absolute; top: 0; left: 0; bottom: 0; right: 0;
-  width: 100%; height: 100%; }
+  width: 100%; max-width: 854px; height: 100%; max-height: 480px; }
 ```
